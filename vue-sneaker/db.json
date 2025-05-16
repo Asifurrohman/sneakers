@@ -1,0 +1,76 @@
+{
+    "items": [
+        {
+            "id": 1,
+            "title": "Men's Sneaker Nike Blazer Mid Suede",
+            "price": 950000,
+            "imageUrl": "/img/sneakers/sneakers-1.jpg"
+        },
+        {
+            "id": 2,
+            "title": "Men's Sneaker Nike Air Max 270",
+            "price": 620000,
+            "imageUrl": "/img/sneakers/sneakers-2.jpg"
+        },
+        {
+            "id": 3,
+            "title": "Men's Sneaker Nike Blazer Mid Suede",
+            "price": 1250000,
+            "imageUrl": "/img/sneakers/sneakers-3.jpg"
+        },
+        {
+            "id": 4,
+            "title": "Sneaker Puma X Aka Boku Future Rider",
+            "price": 1500000,
+            "imageUrl": "/img/sneakers/sneakers-4.jpg"
+        },
+        {
+            "id": 5,
+            "title": "Sneaker Future Rider",
+            "price": 1600000,
+            "imageUrl": "/img/sneakers/sneakers-5.jpg"
+        },
+        {
+            "id": 6,
+            "title": "Sneaker Black Edition",
+            "price": 750000,
+            "imageUrl": "/img/sneakers/sneakers-6.jpg"
+        },
+        {
+            "id": 7,
+            "title": "Sneaker Orange Boomb Edition",
+            "price": 5500,
+            "imageUrl": "/img/sneakers/sneakers-7.jpg"
+        },
+        {
+            "id": 8,
+            "title": "Sneaker Nike Air Max 270",
+            "price": 800000,
+            "imageUrl": "/img/sneakers/sneakers-8.jpg"
+        },
+        {
+            "id": 9,
+            "title": "Sneaker Nike Air Force 1",
+            "price": 400000,
+            "imageUrl": "/img/sneakers/sneakers-9.jpg"
+        },
+        {
+            "id": 10,
+            "title": "Sneaker Adidas Ultraboost",
+            "price": 620000,
+            "imageUrl": "/img/sneakers/sneakers-10.jpg"
+        },
+        {
+            "id": 11,
+            "title": "Sneaker Puma Clyde All-Pro",
+            "price": 700000,
+            "imageUrl": "/img/sneakers/sneakers-11.jpg"
+        },
+        {
+            "id": 12,
+            "title": "Sneaker Converse Chuck Taylor All-Star",
+            "price": 350000,
+            "imageUrl": "/img/sneakers/sneakers-12.jpg"
+        }
+    ]
+}
