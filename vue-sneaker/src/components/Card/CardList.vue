@@ -14,10 +14,6 @@ defineProps({
 const emit = defineEmits(
     ['addToFavourite']
 )
-
-const onClickAdd = () => {
-    emit('addToFavourite', item)
-}
 </script>
 
 <style scoped>
