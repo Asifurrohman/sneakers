@@ -1,5 +1,5 @@
 <template>
-    <!-- <Drawer></Drawer> -->
+    <!-- <Drawer v-if="drawerOpen"></Drawer> -->
     <div class="my-10">
         <div class="flex justify-between items-center">
             <h2 class="text-3xl font-bold">
@@ -25,7 +25,7 @@
     </div>
 </template>
 
-<!-- terakhir video tutorial di waktu 04:31:26 -->
+<!-- terakhir video tutorial di waktu 04:59:37 -->
 
 <script setup>
 import CardList from '@/components/Card/CardList.vue'
@@ -35,7 +35,15 @@ import { ref, onMounted, watch, reactive, provide } from 'vue'
 import axios from 'axios'
 
 const items = ref([])
-const favourites = ref([])
+
+// const drawerOpen = ref(false)
+// const closeDrawer = () => {
+//     openDrawer.value = false
+// }
+
+// const openDrawer = () => {
+//     openDrawer.value = true
+// }
 
 const filters = reactive({
     sortBy: 'title',
@@ -54,16 +62,18 @@ const onChangeSearchInput = (event) => {
 
 const addToFavourite = async(item) => {
     try {
+        
         if(!item.isFavourite){
             const obj = {
                 parentId: item.id
             }
-            const { data } = await axios.post(`https://70e0dec5c69ca79f.mokky.dev/favourites`, obj)
+            
             item.isFavourite = true
+            const { data } = await axios.post(`https://70e0dec5c69ca79f.mokky.dev/favourites`, obj)
             item.favouriteId = data.id
         } else {
-            await axios.delete(`https://70e0dec5c69ca79f.mokky.dev/favourites/${item.favouriteId}`)
             item.isFavourite = false
+            await axios.delete(`https://70e0dec5c69ca79f.mokky.dev/favourites/${item.favouriteId}`)
             item.favouriteId = null
         }
     } catch(err){
@@ -124,7 +134,10 @@ onMounted(async() => {
 
 watch(filters, fetchItems)
 
-provide('addToFavourite', addToFavourite)
+// provide('cartActions', {
+//     closeDrawer,
+//     openDrawer
+// })
 </script>
 
 <style scoped>
