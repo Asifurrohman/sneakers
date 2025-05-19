@@ -26,7 +26,7 @@
     </div>
 </template>
 
-<!-- terakhir video tutorial di waktu 04:59:37 -->
+<!-- terakhir video tutorial di waktu 05:24:06 -->
 
 <script setup>
 import { ref, onMounted, watch, reactive, provide, computed } from 'vue'
