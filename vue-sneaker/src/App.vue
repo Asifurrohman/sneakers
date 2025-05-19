@@ -1,8 +1,8 @@
 <template>
     <div class="bg-white font-inter">
-        <Drawer v-if="drawerOpen"></Drawer>
-        <Header @openDrawer="openDrawer"></Header>
-        <div class="mx-10">
+        <!-- <Drawer v-if="drawerOpen"></Drawer> -->
+        <!-- <Header @openDrawer="openDrawer"></Header> -->
+        <div>
             <RouterView></RouterView>
         </div>
     </div>
@@ -14,19 +14,20 @@ import { RouterLink, RouterView } from 'vue-router'
 import Header from './components/Header.vue'
 import Drawer from './components/Drawer/Drawer.vue'
 
-const drawerOpen = ref(false)
-const closeDrawer = () => {
-    drawerOpen.value = false
-}
+// const drawerOpen = ref(false)
 
-const openDrawer = () => {
-    drawerOpen.value = true
-}
+// const closeDrawer = () => {
+//     drawerOpen.value = false
+// }
 
-provide('cartActions', {
-    closeDrawer,
-    openDrawer
-})
+// const openDrawer = () => {
+//     drawerOpen.value = true
+// }
+
+// provide('cartActions', {
+//     closeDrawer,
+//     openDrawer
+// })
 </script>
 
 <style scoped>

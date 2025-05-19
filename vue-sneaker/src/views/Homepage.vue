@@ -1,6 +1,7 @@
 <template>
-    <!-- <Drawer v-if="drawerOpen"></Drawer> -->
-    <div class="my-10">
+    <Drawer v-if="drawerOpen"></Drawer>
+    <Header :totalPrice="totalPrice" @openDrawer="openDrawer"></Header>
+    <div class="m-10">
         <div class="flex justify-between items-center">
             <h2 class="text-3xl font-bold">
                 All Sneakers
@@ -20,7 +21,7 @@
             </div>
         </div>
         
-        <CardList :items="items" @addToFavourite="addToFavourite"></CardList>
+        <CardList :items="items" @addToFavourite="addToFavourite" @addToCart="onClickAddPlus"></CardList>
         
     </div>
 </template>
@@ -28,22 +29,29 @@
 <!-- terakhir video tutorial di waktu 04:59:37 -->
 
 <script setup>
-import CardList from '@/components/Card/CardList.vue'
-import Drawer from '@/components/Drawer/Drawer.vue'
-
-import { ref, onMounted, watch, reactive, provide } from 'vue'
+import { ref, onMounted, watch, reactive, provide, computed } from 'vue'
 import axios from 'axios'
 
+import CardList from '@/components/Card/CardList.vue'
+import Header from '@/components/Header.vue'
+import Drawer from '@/components/Drawer/Drawer.vue'
+
 const items = ref([])
+const cart = ref([])
 
-// const drawerOpen = ref(false)
-// const closeDrawer = () => {
-//     openDrawer.value = false
-// }
+const drawerOpen = ref(false)
 
-// const openDrawer = () => {
-//     openDrawer.value = true
-// }
+const totalPrice = computed(() => 
+    cart.value.reduce((acc, item) => acc + item.price, 0)
+)
+
+const closeDrawer = () => {
+    drawerOpen.value = false
+}
+
+const openDrawer = () => {
+    drawerOpen.value = true
+}
 
 const filters = reactive({
     sortBy: 'title',
@@ -60,9 +68,30 @@ const onChangeSearchInput = (event) => {
     console.log(filters.searchQuery)
 }
 
+const addToCart = (item) => {
+    cart.value.push(item)
+    item.isAdded = true
+}
+
+const removeFromCart = (item) => {
+    cart.value.splice(
+        cart.value.indexOf(item), 1
+    )
+    item.isAdded = false
+}
+
+const onClickAddPlus = (item) => {
+    if(!item.isAdded){
+        addToCart(item)
+    } else {
+        removeFromCart(item)
+    }
+
+    console.log(cart.value)
+}
+
 const addToFavourite = async(item) => {
     try {
-        
         if(!item.isFavourite){
             const obj = {
                 parentId: item.id
@@ -134,10 +163,13 @@ onMounted(async() => {
 
 watch(filters, fetchItems)
 
-// provide('cartActions', {
-//     closeDrawer,
-//     openDrawer
-// })
+provide('cart', {
+    cart,
+    closeDrawer,
+    openDrawer,
+    addToCart,
+    removeFromCart
+})
 </script>
 
 <style scoped>
